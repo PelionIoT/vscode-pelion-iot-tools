@@ -1,0 +1,113 @@
+{
+	"name": "pelion-iot-tools",
+	"displayName": "Pelion IoT Tools",
+	"description": "Interact with Pelion IoT platform directly in VS Code",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.58.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:pelionExplorer",
+		"onCommand:pelion-iot-tools.helloWorld"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "pelion-explorer",
+					"title": "Pelion IoT platform Explorer",
+					"icon": "resources/pelion.svg"
+				}
+			]
+		},
+		"views": {
+			"pelion-explorer": [
+				{
+					"id": "pelionExplorer",
+					"name": "Pelion IoT platform Explorer",
+					"icon": "resources/pelion.svg",
+					"contextualTitle": "Pelion IoT platform Explorer"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "pelionExplorer",
+				"contents": "No Pelion Access Key configured.\n[Setup Access Key](command:pelion.setAccessKey)\n\nNo yet a Pelion IoT platform user?\n[Create Free Account](command:pelion.createAccount)"
+			}
+		],
+		"commands": [
+			{
+				"command": "pelion.createAccount",
+				"title": "Create Free Account",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.setAccessKey",
+				"title": "Set Access Key",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.genDevCerts",
+				"title": "Generate Development and Update Certificates",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.genDeltaImage",
+				"title": "Generate Delta Firmware Image",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.uploadDeltaImage",
+				"title": "Upload Delta Firmware Image",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.uploadManifestFile",
+				"title": "Upload Manifest file",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.startUpdateCampaign",
+				"title": "Start an update Campaign",
+				"category": "Pelion"
+			},
+			{
+				"command": "pelion.startVirtualDemo",
+				"title": "Start Virtual Device Simulator",
+				"category": "Pelion"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/keytar": "^4.4.2",
+		"@types/uuid": "^8.3.0",
+		"@types/vscode": "^1.58.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"eslint": "^7.27.0",
+		"@typescript-eslint/eslint-plugin": "^4.26.0",
+		"@typescript-eslint/parser": "^4.26.0",
+		"glob": "^7.1.7",
+		"mocha": "^8.4.0",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2"
+	},
+	"dependencies": {
+		"axios": "^0.21.1",
+		"uuid": "^8.3.2"
+	}
+}
